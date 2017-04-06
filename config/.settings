@@ -1,0 +1,16 @@
+{
+    "projectName": "Account Team",
+    "username": "samba.developer@hotmail.com",
+    "id": "b35ac760-1a7b-11e7-a644-b7fceecaab71",
+    "namespace": "",
+    "environment": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "workspace": "/Users/samba/Documents/Github",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "StaticResource"
+    ]
+}

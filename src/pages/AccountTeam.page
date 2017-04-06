@@ -1,0 +1,28 @@
+<apex:page standardController="Account" extensions="AccountTeamController">
+    <apex:sectionHeader title="Account Team"/>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Add"/>
+                <apex:commandButton value="Display Access" rendered="{!AccountTeamMembers.size > 0}"/>
+                <apex:commandButton value="Delete All" onclick="if(confirm('Are you sure?')){return true;}else{return false;}" action="{!deleteAll}" rendered="{!AccountTeamMembers.size > 0}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockTable value="{!AccountTeamMembers}" var="item">
+                <apex:column headerValue="Action" styleClass="actionColumn">
+                    <apex:commandLink value="Edit" action="{!editAccountTeamMember}" styleClass="actionLink">
+                        <apex:param name="accountTeamMemberId" value="{!item.Id}" assignTo="{!AccountTeamMemberId}"/>
+                    </apex:commandLink>
+                    &nbsp;|&nbsp;
+                    <apex:commandLink value="Del" action="{!delAccountTeamMember}" styleClass="actionLink">
+                        <apex:param name="accountTeamMemberId" value="{!item.Id}" assignTo="{!AccountTeamMemberId}"/>
+                    </apex:commandLink>
+                </apex:column>
+                <apex:column headerValue="Team Member">
+                    <apex:outputField value="{!item.UserId}"/>
+                </apex:column>
+                <apex:column headerValue="Team Role" value="{!item.TeamMemberRole}"/>
+            </apex:pageBlockTable>
+            <apex:outputText rendered="{!AccountTeamMembers.size = 0}" value="There are no records to display." />
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

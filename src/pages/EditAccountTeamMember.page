@@ -1,0 +1,15 @@
+<apex:page tabStyle="Account" standardController="AccountTeamMember" extensions="EditAccountTeamMemberController">
+    <apex:sectionHeader title="Account Team" subtitle="Edit Member"/>
+    <apex:form >
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Save" action="{!saveTeamMember}"/>
+                <apex:commandButton value="Cancel" action="{!cancelTeamMember}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Update this team member" columns="1">
+                <apex:outputField value="{!CurrentTeamMember.UserId}"/>
+                <apex:inputField value="{!CurrentTeamMember.TeamMemberRole}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
