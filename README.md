@@ -7,7 +7,7 @@ Custom Account Team section for the Account object.
 3. In order to achieve the item 1 and 2 above, i created this project. According to your requirement, you can add some logic into my code.
 
 ## How to use this project?
-
+htpps://[Domain].salesforce.com/apex/AccountTeam?id=[Account.Id]
 
 ## Installation
 This is a Unmanaged package, please see the installation url below.
