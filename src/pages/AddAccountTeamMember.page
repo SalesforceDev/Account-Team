@@ -1,40 +1,31 @@
 <apex:page standardController="Account" tabStyle="Account" extensions="AddAccountTeamMemberController">
-	<apex:sectionHeader title="{!Account.Name}" subtitle="New Account Team Members"/>
-	<apex:form>
-		<apex:pageBlock>
-			<apex:pageBlockButtons location="top">
-				<apex:commandButton value="Save" action="{!saveTeamMember}"/>
-				<apex:commandButton value="Save & More" action="{!saveAndMoreTeamMember}"/>
-				<apex:commandButton value="Cancel" action="{!cancelTeamMember}"/>
-			</apex:pageBlockButtons>
-			<apex:pageBlockTable value="{!AccountTeamMembers}" var="item">
-                <apex:column headerValue="Team Member">
-                    <apex:inputField value="{!item.UserId}"/>
-                </apex:column>
-                <apex:column headerValue="Account Access">
-                    <apex:selectList size="1" value="{!item.AccountAccessLevel}">
-                    	<apex:selectOption itemLabel="Read Only" itemValue="Read" />
-                    	<apex:selectOption itemLabel="Read/Write" itemValue="Edit" />
-                    </apex:selectList>
-                </apex:column>
-                <apex:column headerValue="Opportunity Access">
-                	<apex:selectList size="1" value="{!item.OpportunityAccessLevel}">
-                		<apex:selectOption itemLabel="Private" itemValue="None" />
-                    	<apex:selectOption itemLabel="Read Only" itemValue="Read" />
-                    	<apex:selectOption itemLabel="Read/Write" itemValue="Edit" />
-                    </apex:selectList>
-                </apex:column>
-                <apex:column headerValue="Case Access">
-                    <apex:selectList size="1" value="{!item.CaseAccessLevel}">
-                		<apex:selectOption itemLabel="Private" itemValue="None" />
-                    	<apex:selectOption itemLabel="Read Only" itemValue="Read" />
-                    	<apex:selectOption itemLabel="Read/Write" itemValue="Edit" />
-                    </apex:selectList>
-                </apex:column>
-                <apex:column headerValue="Team Role">
-                    <apex:inputField value="{!item.TeamMemberRole}"/>
-                </apex:column>
-            </apex:pageBlockTable>
-		</apex:pageBlock>
-	</apex:form>
+    <apex:sectionHeader title="{!Account.Name}" subtitle="New Account Team Members"/>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!saveTeamMember}"/>
+                <apex:commandButton value="Save & New" action="{!saveAndNewTeamMember}"/>
+                <apex:commandButton value="Cancel" action="{!cancelTeamMember}" immediate="true"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection columns="1">
+                <apex:inputField value="{!CurrentAccountTeamMember.UserId}" />
+                <apex:selectList size="1" value="{!CurrentAccountTeamMember.AccountAccessLevel}">
+                    <apex:selectOption itemLabel="Read Only" itemValue="Read" />
+                    <apex:selectOption itemLabel="Read/Write" itemValue="Edit" />
+                </apex:selectList>
+                <apex:selectList size="1" value="{!CurrentAccountTeamMember.OpportunityAccessLevel}">
+                    <apex:selectOption itemLabel="Private" itemValue="None" />
+                    <apex:selectOption itemLabel="Read Only" itemValue="Read" />
+                    <apex:selectOption itemLabel="Read/Write" itemValue="Edit" />
+                </apex:selectList>
+                <apex:selectList size="1" value="{!CurrentAccountTeamMember.CaseAccessLevel}">
+                    <apex:selectOption itemLabel="Private" itemValue="None" />
+                    <apex:selectOption itemLabel="Read Only" itemValue="Read" />
+                    <apex:selectOption itemLabel="Read/Write" itemValue="Edit" />
+                </apex:selectList>
+                <apex:inputField value="{!CurrentAccountTeamMember.TeamMemberRole}"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
 </apex:page>

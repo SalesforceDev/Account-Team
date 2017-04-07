@@ -24,6 +24,13 @@ public class AccountTeamController
         return pageRef;
     }
     
+    public PageReference addAccountTeamMembers()
+    {
+        PageReference pageRef = Page.AddAccountTeamMember;
+        pageRef.getParameters().put('id', accId);
+        return pageRef;
+    }
+
     public void delAccountTeamMember()
     {
         delete [select Id from AccountTeamMember where Id = :AccountTeamMemberId];

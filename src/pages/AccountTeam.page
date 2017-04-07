@@ -3,7 +3,7 @@
     <apex:form >
         <apex:pageBlock >
             <apex:pageBlockButtons location="top">
-                <apex:commandButton value="Add"/>
+                <apex:commandButton value="Add" action="{!addAccountTeamMembers}"/>
                 <apex:commandButton value="Display Access" rendered="{!AccountTeamMembers.size > 0}"/>
                 <apex:commandButton value="Delete All" onclick="if(confirm('Are you sure?')){return true;}else{return false;}" action="{!deleteAll}" rendered="{!AccountTeamMembers.size > 0}"/>
             </apex:pageBlockButtons>

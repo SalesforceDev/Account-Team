@@ -1,38 +1,57 @@
 public with sharing class AddAccountTeamMemberController
 {
-	private String accId;
+    private String accId;
 
     public AddAccountTeamMemberController(ApexPages.StandardController std)
     {
-    	accId = std.getId();
-    	initData();
+        accId = std.getId();
+        initData();
     }
-
-    public List<AccountTeamMember> AccountTeamMembers {get; set;}
+    
+    public AccountTeamMember CurrentAccountTeamMember {get; set;}
 
     public void initData()
     {
-    	AccountTeamMembers = new List<AccountTeamMember>();
-    	for(Integer i = 0; i < 5; i++)
-    	{
-    		AccountTeamMember teamMember = new AccountTeamMember(AccountId = accId);
-    		AccountTeamMembers.add(teamMember);
-    	}
+        CurrentAccountTeamMember = new AccountTeamMember(AccountId = accId);
     }
 
-    public void saveTeamMember()
+    public PageReference saveTeamMember()
     {
-
+        
+        if(CurrentAccountTeamMember.UserId != null && String.isEmpty(CurrentAccountTeamMember.TeamMemberRole))
+        {
+            CurrentAccountTeamMember.TeamMemberRole.addError('You must enter a value.');
+            return null;
+        }
+        try
+        {
+            insert CurrentAccountTeamMember;
+        }
+        catch(Exception ex)
+        {
+            return null;
+        }
+        PageReference pageRef = Page.AccountTeam;
+        pageRef.getParameters().put('id', accId);
+        return pageRef;
     }
-
-    public void saveAndMoreTeamMember()
+    
+    public void saveAndNewTeamMember()
     {
-    	
+        if(saveTeamMember() != null)
+        {
+            initData();
+        }
     }
-
+    
+    public void addTeamMember()
+    {
+    
+    }
+    
     public PageReference cancelTeamMember()
     {
-    	PageReference pageRef = Page.AccountTeam;
+        PageReference pageRef = Page.AccountTeam;
         pageRef.getParameters().put('id', accId);
         return pageRef;
     }
