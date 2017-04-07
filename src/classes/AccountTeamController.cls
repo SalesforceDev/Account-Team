@@ -8,12 +8,12 @@ public class AccountTeamController
         initAccountTeam();
     }
     
+    public List<AccountTeamMember> AccountTeamMembers {get; set;}
+    
     private void initAccountTeam()
     {
-        AccountTeamMembers = [select Id, UserId, TeamMemberRole from AccountTeamMember where AccountId = :accId];
+        AccountTeamMembers = [select Id, UserId, AccountAccessLevel, OpportunityAccessLevel, CaseAccessLevel, TeamMemberRole from AccountTeamMember where AccountId = :accId];
     }
-    
-    public List<AccountTeamMember> AccountTeamMembers {get; set;}
     
     public String AccountTeamMemberId {get; set;}
     

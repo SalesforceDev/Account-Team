@@ -11,6 +11,7 @@ Custom Account Team section for the Account object.
 
 ## Installation
 This is a Unmanaged package, please see the installation url below.
+https://login.salesforce.com/packaging/installPackage.apexp?p0=04ti00000011Rai
 
 
 ## Donation

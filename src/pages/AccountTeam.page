@@ -4,7 +4,6 @@
         <apex:pageBlock >
             <apex:pageBlockButtons location="top">
                 <apex:commandButton value="Add" action="{!addAccountTeamMembers}"/>
-                <apex:commandButton value="Display Access" rendered="{!AccountTeamMembers.size > 0}"/>
                 <apex:commandButton value="Delete All" onclick="if(confirm('Are you sure?')){return true;}else{return false;}" action="{!deleteAll}" rendered="{!AccountTeamMembers.size > 0}"/>
             </apex:pageBlockButtons>
             <apex:pageBlockTable value="{!AccountTeamMembers}" var="item">
@@ -19,6 +18,15 @@
                 </apex:column>
                 <apex:column headerValue="Team Member">
                     <apex:outputField value="{!item.UserId}"/>
+                </apex:column>
+                <apex:column headerValue="Account Access">
+                    <apex:outputField value="{!item.AccountAccessLevel}"/>
+                </apex:column>
+                <apex:column headerValue="Opportunity Access">
+                    <apex:outputField value="{!item.OpportunityAccessLevel}"/>
+                </apex:column>
+                <apex:column headerValue="Case Access">
+                    <apex:outputField value="{!item.CaseAccessLevel}"/>
                 </apex:column>
                 <apex:column headerValue="Team Role" value="{!item.TeamMemberRole}"/>
             </apex:pageBlockTable>

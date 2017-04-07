@@ -44,11 +44,6 @@ public with sharing class AddAccountTeamMemberController
         }
     }
     
-    public void addTeamMember()
-    {
-    
-    }
-    
     public PageReference cancelTeamMember()
     {
         PageReference pageRef = Page.AccountTeam;
